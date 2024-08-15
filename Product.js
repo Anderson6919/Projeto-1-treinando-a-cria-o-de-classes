@@ -1,30 +1,29 @@
 class Product {
-    constructor(name, description, price, discount, newPrice) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.inStock = 0;
-        this.discount = discount;
-        this.newPrice = newPrice;
+    constructor (name, descriptions, price) {
+        this.name = name
+        this.descriptions = descriptions
+        this.price = price
+        this.inStock = 0
+
     }
-    addToStock(quantidade) {
-        this.inStock += quantidade;
+    addToStock(quantity) {
+        this.inStock += quantity
+        console.log(`
+            nome do produto:${this.name}
+            descição do produto:${this.descriptions}
+            valor do produto:${this.price.toFixed}
+            quanidade do produto:${this.inStock}
+            `)
     }
-    calculateDiscount(desconto) {
-        this.newPrice = this.price - (this.price * desconto / 100)
-        this.desconto = desconto;
+    calculateDiscount (discount){
+        this.price = this.price - (discount * this.price / 100)
+        console.log(`
+            =========================
+            Desconto no produto: ${discount}%
+            Novo valor do produto: ${this.price.toFixed(2)}`)
     }
 }
 
-const produto = new Product('Notebook', 'Notebook Nitro 5', 1000)
-produto.addToStock(10)
-produto.calculateDiscount(5)
-
-console.log(`
-    Nome do produto: ${produto.name}
-    Descrição do produto: ${produto.description}
-    Valor do produto: ${'R$' + produto.price + ',00'}
-    Quantidade no estoque: ${produto.inStock}
-    ===========================================
-    Desconto no produto: ${produto.desconto + '%'}
-    Novo valor do produto: ${'R$' + produto.newPrice + ',00'}`)
+const notebook = new Product('Notebook', 'Notebook nitro 5', 1000)
+notebook.addToStock(10)
+notebook.calculateDiscount(5)
